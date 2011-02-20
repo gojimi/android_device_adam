@@ -26,19 +26,8 @@
     android:focusable="true"
     android:descendantFocusability="afterDescendants"
     >
-	<LinearLayout android:id="@+id/status_buttons"
-                  android:layout_width="wrap_content"
-                  android:layout_height="match_parent"
-                  android:orientation="horizontal">
-    <ImageButton android:id="@+id/status_home"
-            android:layout_width="50dip"
-            android:layout_height="match_parent"
-            android:background="@drawable/ic_statusbar_home"/>
-    </LinearLayout>
-
 
     <LinearLayout android:id="@+id/icons"
-   		android:paddingLeft="50dip"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
@@ -56,10 +45,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:paddingRight="0dip"
+            android:paddingRight="6dip"
             android:gravity="center_vertical"
-            android:orientation="horizontal"/>   
-       
+            android:orientation="horizontal"/>    
 
         <com.android.systemui.statusbar.Clock
             android:textAppearance="@*android:style/TextAppearance.StatusBar.Icon"
@@ -69,21 +57,39 @@
             android:paddingRight="6dip"
             android:gravity="center_vertical|left"
             />
- 	
-       	<ImageButton android:id="@+id/status_menu"
-            android:layout_width="50dip"
-       	    android:layout_height="match_parent"
-  	    android:background="@drawable/ic_statusbar_menu"/> 
-	<ImageButton android:id="@+id/status_back"
-            android:layout_width="50dip"
+
+        <!-- The following are button layouts for tablet style statusbar buttons
+             Visibility is handled in config.xml by setting config_statusbar_buttons = "true"
+             Size of buttons is set at stock statusbar size of 25dip realistically this may
+             be too small for tablets, but it can easily be changed in device overlay along
+             with the size of the statusbar in dimens.xml.  -->
+        <ImageButton android:id="@+id/status_home"
+            android:layout_width="38dip"
             android:layout_height="match_parent"
-            android:background="@drawable/ic_statusbar_back"/>
+            android:background="@drawable/ic_statusbar_home"
+            android:paddingRight="6dip"
+            android:visibility="gone"/>
+
+        <ImageButton android:id="@+id/status_menu"
+            android:layout_width="38dip"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_statusbar_menu"
+            android:paddingRight="6dip"
+            android:visibility="gone"/>
+
+        <ImageButton android:id="@+id/status_back"
+            android:layout_width="38dip"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_statusbar_back"
+            android:paddingRight="6dip"
+            android:visibility="gone"/>
+
     </LinearLayout>
         
     <LinearLayout android:id="@+id/ticker"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="50dip"
+        android:paddingLeft="6dip"
         android:animationCache="false"
         android:orientation="horizontal" >
         <ImageSwitcher android:id="@+id/tickerIcon"
@@ -92,12 +98,12 @@
             android:layout_marginRight="8dip"
             >
             <com.android.systemui.statusbar.AnimatedImageView
-                android:layout_width="50dip"
-                android:layout_height="50dip"
+                android:layout_width="38dip"
+                android:layout_height="38dip"
                 />
             <com.android.systemui.statusbar.AnimatedImageView
-                android:layout_width="50dip"
-                android:layout_height="50dip"
+                android:layout_width="38dip"
+                android:layout_height="38dip"
                 />
         </ImageSwitcher>
         <com.android.systemui.statusbar.TickerView android:id="@+id/tickerText"
